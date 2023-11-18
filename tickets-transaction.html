@@ -104,6 +104,339 @@
         </div>
     </div>
     <div class=" divider"></div>
+
+    <!-- ONGOING TABLE -->
+    <section class="accordion container-fluid" id="ongoing-section">
+        <div class="accordion-item">
+            <!-- HEADER -->
+            <h2 class="accordion-header">
+                <button class="accordion-button bg-warning" type="button" data-bs-toggle="collapse" data-bs-target="#Ongoing-tbl" aria-expanded="true" aria-controls="Ongoing-tbl">
+                    <div class="text-dark fw-bold">On-Going Tickets</div>
+                </button>
+            </h2>
+            <!-- BODY -->
+            <div id="Ongoing-tbl" class = "accordion-collapse collapse" data-bs-parent="ongoing-section">
+                <div class="accordion-body">
+                    <!-- Table -->
+                    <table class="table-striped table-responsive-md table-sm table-hover" width="100%">
+                        <!-- TABLE HEAD -->
+                        <thead class="bg-dark text-light">
+                            <tr>
+                                <th scope="col">Ticket No</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Requested By</th>
+                                <th scope="col">Department</th>
+                                <th scope="col">Date Requested</th>
+                                <th scope="col">Target Date</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <!-- TABLE BODY -->
+                        <tbody>
+                            <!-- ROW 1 -->
+                            <tr>
+                                <th class="align-middle" scope="row">TIX-20231019</th>
+                                <td class="align-middle">Transfer of PC</td>
+                                <td class="align-middle">John Doe</td>
+                                <td class="align-middle">Sales Department</td>
+                                <td class="align-middle">2023-10-19</td>
+                                <td class="align-middle">2023-10-23</td>
+                                <td class="align-middle">Hardware Support</td>
+                                <td class="align-middle"><span class="badge rounded-pill text-bg-warning">ongoing</span></td>
+                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                            </tr>
+                            <!-- ROW 2 -->
+                            <tr>
+                                <th class="align-middle" scope="row">TIX-20231020</th>
+                                <td class="align-middle">Additional Module Access</td>
+                                <td class="align-middle">Rick Shaw</td>
+                                <td class="align-middle">HR Department</td>
+                                <td class="align-middle">2023-10-20</td>
+                                <td class="align-middle">2023-10-27</td>
+                                <td class="align-middle">Access Elevation</td>
+                                <td class="align-middle"><span class="badge rounded-pill text-bg-warning">ongoing</span></td>
+                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                            </tr>
+                            <!-- ROW 3 -->
+                            <tr>
+                                <th class="align-middle" scope="row">TIX-20231022</th>
+                                <td class="align-middle">PC Problem</td>
+                                <td class="align-middle">Erika Weltz</td>
+                                <td class="align-middle">HR Department</td>
+                                <td class="align-middle">2023-10-22</td>
+                                <td class="align-middle">2023-10-26</td>
+                                <td class="align-middle">Hardware Support</td>
+                                <td class="align-middle"><span class="badge rounded-pill text-bg-warning">ongoing</span></td>
+                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                            </tr>
+                            <!-- ROW 4 -->
+                            <tr>
+                                <th class="align-middle" scope="row">TIX-20231004</th>
+                                <td class="align-middle">New Report</td>
+                                <td class="align-middle">Sam Son</td>
+                                <td class="align-middle">Accounting Department</td>
+                                <td class="align-middle">2023-10-04</td>
+                                <td class="align-middle">2023-10-10</td>
+                                <td class="align-middle">Software Module</td>
+                                <td class="align-middle"><span class="badge rounded-pill text-bg-warning me-1">ongoing</span><span class="badge rounded-pill text-bg-danger">overdue</span></td>
+                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                            </tr>
+                            <tr>
+                                <th class="align-middle" scope="row">TIX-20231010</th>
+                                <td class="align-middle">Bug Detected</td>
+                                <td class="align-middle">Julie Davis</td>
+                                <td class="align-middle">Accounting Department</td>
+                                <td class="align-middle">2023-10-10</td>
+                                <td class="align-middle">2023-10-16</td>
+                                <td class="align-middle">Software Module</td>
+                                <td class="align-middle"><span class="badge rounded-pill text-bg-warning me-1">ongoing</span><span class="badge rounded-pill text-bg-danger">overdue</span></td>
+                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class=" divider"></div>
+
+    <!-- ON QUEUE -->
+    <section class="accordion container-fluid" id="queue-section">
+        <div class="accordion-item">
+            <!-- HEADER -->
+            <h2 class="accordion-header">
+                <button class="accordion-button bg-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#OnQueue-tbl" aria-expanded="true" aria-controls="OnQueue-tbl">
+                    <div class="text-light fw-bold">On-Queue Tickets</div>
+                </button>
+            </h2>
+            <!-- BODY -->
+            <div id="OnQueue-tbl" class = "accordion-collapse collapse" data-bs-parent="queue-section">
+                <div class="accordion-body">
+                    <!-- Table -->
+                    <table class="table-striped table-responsive-md table-sm table-hover" width="100%">
+                        <!-- TABLE HEAD -->
+                        <thead class="bg-dark text-light">
+                            <tr>
+                                <th scope="col">Ticket No</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Requested By</th>
+                                <th scope="col">Department</th>
+                                <th scope="col">Date Requested</th>
+                                <th scope="col">Target Date</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <!-- TABLE BODY -->
+                        <tbody>
+                            <!-- ROW 1 -->
+                            <tr>
+                                <th class="align-middle fs-6" scope="row">TIX-20231025</th>
+                                <td class="align-middle fs-6">New PC for employee</td>
+                                <td class="align-middle fs-6">Clark Cena</td>
+                                <td class="align-middle fs-6">Sales Department</td>
+                                <td class="align-middle fs-6">2023-10-25</td>
+                                <td class="align-middle fs-6">2023-10-27</td>
+                                <td class="align-middle fs-6">Hardware Assignment</td>
+                                <td class="align-middle fs-6"><span class="badge rounded-pill text-bg-secondary">On Queue</span></td>
+                                <td class="align-middle fs-6"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                            </tr>
+
+                            <!-- ROW 2 -->
+                            <tr>
+                                <th class="align-middle" scope="row">TIX-20231024</th>
+                                <td class="align-middle">Incorrect Computation</td>
+                                <td class="align-middle">John Morty</td>
+                                <td class="align-middle">Accounting Department</td>
+                                <td class="align-middle">2023-10-06</td>
+                                <td class="align-middle">2023-10-14</td>
+                                <td class="align-middle">Software Module</td>
+                                <td class="align-middle"><span class="badge rounded-pill text-bg-secondary me-1">On Queue</span><span class="badge rounded-pill text-bg-danger">overdue</span></td>
+                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                            </tr>
+
+                            <!-- ROW 3 -->
+                            <tr>
+                                <th class="align-middle" scope="row">TIX-20231017</th>
+                                <td class="align-middle">Cannot Print</td>
+                                <td class="align-middle">Adam Black</td>
+                                <td class="align-middle">HighSchool Department</td>
+                                <td class="align-middle">2023-10-05</td>
+                                <td class="align-middle">2023-10-08</td>
+                                <td class="align-middle">Hardware Support</td>
+                                <td class="align-middle"><span class="badge rounded-pill text-bg-secondary me-1">On Queue</span><span class="badge rounded-pill text-bg-danger">overdue</span></td>
+                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                            </tr>
+
+                            <!-- ROW 4 -->
+                            <tr>
+                                <th class="align-middle" scope="row">TIX-20231015</th>
+                                <td class="align-middle">New Laptop Request</td>
+                                <td class="align-middle">Donna Addams</td>
+                                <td class="align-middle">HighSchool Department</td>
+                                <td class="align-middle">2023-10-04</td>
+                                <td class="align-middle">2023-10-10</td>
+                                <td class="align-middle">Hardware Assignment</td>
+                                <td class="align-middle"><span class="badge rounded-pill text-bg-secondary me-1">On Queue</span><span class="badge rounded-pill text-bg-danger">overdue</span></td>
+                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                            </tr>
+
+                            <!-- ROW 5 -->
+                            <tr>
+                                <th class="align-middle" scope="row">TIX-20231011</th>
+                                <td class="align-middle">Additional Module Access</td>
+                                <td class="align-middle">Sandra David</td>
+                                <td class="align-middle">HighSchool Department</td>
+                                <td class="align-middle">2023-10-15</td>
+                                <td class="align-middle">2023-10-26</td>
+                                <td class="align-middle">Software Module</td>
+                                <td class="align-middle"><span class="badge rounded-pill text-bg-secondary">On Queue</span></td>
+                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                            </tr>
+
+                            <!-- ROW 6 -->
+                            <tr>
+                                <th class="align-middle" scope="row">TIX-20231012</th>
+                                <td class="align-middle">Additional Workload</td>
+                                <td class="align-middle">Sandra David</td>
+                                <td class="align-middle">HighSchool Department</td>
+                                <td class="align-middle">2023-10-16</td>
+                                <td class="align-middle">2023-10-26</td>
+                                <td class="align-middle">Software Module</td>
+                                <td class="align-middle"><span class="badge rounded-pill text-bg-secondary">On Queue</span></td>
+                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                            </tr>
+
+                            <!-- ROW 7 -->
+                            <tr>
+                                <th class="align-middle" scope="row">TIX-20231013</th>
+                                <td class="align-middle">System override for record</td>
+                                <td class="align-middle">Amy Lewis</td>
+                                <td class="align-middle">Executive Department</td>
+                                <td class="align-middle">2023-10-15</td>
+                                <td class="align-middle">2023-10-26</td>
+                                <td class="align-middle">Software Module</td>
+                                <td class="align-middle"><span class="badge rounded-pill text-bg-secondary">On Queue</span></td>
+                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                            </tr>
+
+                            <!-- ROW 8 -->
+                            <tr>
+                                <th class="align-middle" scope="row">TIX-20231014</th>
+                                <td class="align-middle">New Report Request</td>
+                                <td class="align-middle">Laura Davis</td>
+                                <td class="align-middle">College Department</td>
+                                <td class="align-middle">2023-10-15</td>
+                                <td class="align-middle">2023-10-24</td>
+                                <td class="align-middle">Software Module</td>
+                                <td class="align-middle"><span class="badge rounded-pill text-bg-secondary">On Queue</span></td>
+                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class=" divider"></div>
+
+    <!-- COMPLETED TABLE -->
+    <section class="accordion container-fluid" id="completed-section">
+        <div class="accordion-item">
+            <!-- HEADER -->
+            <h2 class="accordion-header">
+                <button class="accordion-button bg-success" type="button" data-bs-toggle="collapse" data-bs-target="#completed-tbl" aria-expanded="true" aria-controls="completed-tbl">
+                    <div class="text-light fw-bold">Completed Tickets</div>
+                </button>
+            </h2>
+            <!-- BODY -->
+            <div id="completed-tbl" class = "accordion-collapse collapse" data-bs-parent="completed-section">
+                <div class="accordion-body">
+                    <!-- Table -->
+                    <table class="table-striped table-responsive-md table-sm table-hover" width="100%">
+                        <!-- TABLE HEAD -->
+                        <thead class="bg-dark text-light">
+                            <tr>
+                                <th scope="col">Ticket No</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Requested By</th>
+                                <th scope="col">Department</th>
+                                <th scope="col">Date Requested</th>
+                                <th scope="col">Target Date</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <!-- TABLE BODY -->
+                        <tbody>
+                            <!-- ROW 1 -->
+                            <tr>
+                                <th class="align-middle" scope="row">TIX-20231008</th>
+                                <td class="align-middle">Additional Module Access</td>
+                                <td class="align-middle">Erika Weltz</td>
+                                <td class="align-middle">HR Department</td>
+                                <td class="align-middle">2023-10-06</td>
+                                <td class="align-middle">2023-10-08</td>
+                                <td class="align-middle">Software Module</td>
+                                <td class="align-middle"><span class="badge rounded-pill text-bg-success">completed</span></td>
+                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                            </tr>
+
+                            <!-- ROW 2 -->
+                            <tr>
+                                <th class="align-middle" scope="row">TIX-20231001</th>
+                                <td class="align-middle">New Report For Student Record</td>
+                                <td class="align-middle">Laura Davis</td>
+                                <td class="align-middle">College Department</td>
+                                <td class="align-middle">2023-10-01</td>
+                                <td class="align-middle">2023-10-05</td>
+                                <td class="align-middle">Software Module</td>
+                                <td class="align-middle"><span class="badge rounded-pill text-bg-success">completed</span></td>
+                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                            </tr>
+
+                            <!-- ROW 3 -->
+                            <tr>
+                                <th class="align-middle" scope="row">TIX-20231009</th>
+                                <td class="align-middle">Additional Module Access</td>
+                                <td class="align-middle">Erika Weltz</td>
+                                <td class="align-middle">HR Department</td>
+                                <td class="align-middle">2023-10-06</td>
+                                <td class="align-middle">2023-10-08</td>
+                                <td class="align-middle">Software Module</td>
+                                <td class="align-middle"><span class="badge rounded-pill text-bg-success">completed</span></td>
+                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class=" divider"></div>
+
+    <footer class="bg-light fixed-bottom">
+        <div class="container-fluid py-2">
+            <div class="row justify-content-between">
+                <div class="col text-info fw-bold ps-4">
+                    <a href="#">Ticketing System @2023</a>
+                </div>
+                <div class="col text-end pe-4">
+                    <a href="" class="text-dark text-decoration-none">
+                        Developed by:
+                        <span class="text-primary">Christina Tecson</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
     
     <script src="bootstrap-5.3.2-dist/js/bootstrap.min.js"></script>
 </body>
