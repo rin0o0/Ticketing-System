@@ -10,54 +10,58 @@
     <!-- CUSTOM STYLESHEET -->
     <link rel="stylesheet" href="css/style2.css">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan&family=Montserrat&display=swap" rel="stylesheet">
     <title></title>
     
     
 </head>
 <body>
-    <!-- MAIN CONTAINER -->
-    <div class="container-fluid my-3 px-5">
-        <!-- TITLE/HEADER 1 -->
-        <div class="display-3 fw-bold text-center text-decoration-underline mt-5 mb-5">Ticketing System</div>
+    <!------------------- TITLE/HEADER 1 ------------------->
+    <div class="display-3 fw-bold text-center mb-3 title-bg">
+        <img src="/css/Header.png" class="img-fluid page-header" width="800px" alt="Responsive image" >
+    </div>
+
+    <!------------------------------------------------------------>
+    <!-------------------------- CARDS --------------------------->
+    <!------------------------------------------------------------>
+
+    <div class="container-fluid my-3 px-5 mt-5">
         <!-- ROW DIV -->
         <div class="row g-4 mb-5">
-
             <!-- CARD 1: COMPLETED  -->
             <div class="col-lg-3 col-md-6">
                 <!-- Card div -->
-                <div class="card text-bg-success">
-                    
+                <div class="card text-light bg-green">
                     <!-- Card Row -->
                     <div class="card-body ">
                         <div class="d-flex align-items-center justify-content-around py-1">
-                            <i class="bi bi-check-circle-fill fs-1 text-light"></i>
+                            <i class="bi bi-shield-fill-check fs-1 text-light"></i>
                             <h2 class="fw-bold fs-1">3</h2>
                         </div>
                     </div>
-
                     <!-- Card footer -->
-                    <div class="card-footer text-bg-dark fw-bold fs-4 text-center">
-                        Completed
+                    <div class="card-footer text-bg-dark fw-bold fs-3 text-center" style="font-family: 'League Spartan', sans-serif;">
+                        COMPLETED
                     </div>
                 </div>
             </div>
 
-            <!-- CARD 2: ON PROGRESS  -->
+            <!-- CARD 2: ON-GOING  -->
             <div class="col-lg-3 col-md-6">
                 <!-- Card div -->
-                <div class="card text-bg-warning">
-                    
+                <div class="card text-light bg-blue">
                     <!-- Card Row -->
                     <div class="card-body ">
                         <div class="d-flex align-items-center justify-content-around py-1">
-                            <i class="bi bi-pen-fill fs-1 text-light"></i>
+                            <i class="bi bi-shield-shaded fs-1 text-light"></i>
                             <h2 class="fw-bold fs-1 text-light">5</h2>
                         </div>
                     </div>
                     <!-- Card footer -->
-                    <div class="card-footer text-bg-dark fw-bold fs-4 text-center">
-                        On Progress
+                    <div class="card-footer text-bg-dark fw-bold fs-3 text-center" style="font-family: 'League Spartan', sans-serif;" >
+                        ON-GOING
                     </div>
                 </div>
             </div>
@@ -65,53 +69,68 @@
             <!-- CARD 3: ON QUEUE  -->
             <div class="col-lg-3 col-md-6">
                 <!-- Card div -->
-                <div class="card text-bg-secondary">
-                    
+                <div class="card text-light bg-grey">
                     <!-- Card Row -->
-                    <div class="card-body ">
+                    <div class="card-body">
                         <div class="d-flex align-items-center justify-content-around py-1">
-                            <i class="bi bi-stickies-fill fs-1 text-light"></i>
+                            <i class="bi bi-shield-fill-plus fs-1 text-light"></i>
                             <h2 class="fw-bold fs-1 text-light">8</h2>
                         </div>
                     </div>
-
                     <!-- Card footer -->
-                    <div class="card-footer text-bg-dark fw-bold fs-4 text-center">
-                        On Queue
+                    <div class="card-footer text-bg-dark fw-bold fs-3 text-center" style="font-family: 'League Spartan', sans-serif;">
+                        ON QUEUE
                     </div>
                 </div>
             </div>
 
-            <!-- CARD 4: OVERDUE  -->
+            <!-- CARD 4: CANCELED  -->
             <div class="col-lg-3 col-md-6">
                 <!-- Card div -->
-                <div class="card text-bg-danger">
+                <div class="card text-light bg-red">
                     
                     <!-- Card Row -->
                     <div class="card-body ">
                         <div class="d-flex align-items-center justify-content-around py-1">
-                            <i class="bi bi-exclamation-circle-fill fs-1 text-light"></i>
+                            <i class="bi bi-shield-fill-exclamation fs-1 text-light"></i>
                             <h2 class="fw-bold fs-1 text-light">8</h2>
                         </div>
                     </div>
 
                     <!-- Card footer -->
-                    <div class="card-footer text-bg-dark fw-bold fs-4 text-center">
-                        Overdue
+                    <div class="card-footer text-bg-dark fw-bold fs-3 text-center" style="font-family: 'League Spartan', sans-serif;">
+                        CANCELED
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    
+
+    <!------------------------------------------------------------->
+    <!-------------------- ADD SCHEDULE BUTTON--------------------->
+    <!------------------------------------------------------------->
+
+    <div class="container-fluid px-4 py-2">
+        <div class="row">
+            <button type="button" class="btn bg-black text-light fs-2 mb-3" id="add-schedule" style="font-family: 'League Spartan', sans-serif;">SCHEDULE A GAME</button>
+        </div>
+
+    </div>
     <div class=" divider"></div>
+
+    <!--------------------------------------------------------------->
+    <!-------------------- ACCORDIONS AND TABLES--------------------->
+    <!--------------------------------------------------------------->
 
     <!-- ONGOING TABLE -->
     <section class="accordion container-fluid" id="ongoing-section">
         <div class="accordion-item">
             <!-- HEADER -->
             <h2 class="accordion-header">
-                <button class="accordion-button bg-warning" type="button" data-bs-toggle="collapse" data-bs-target="#Ongoing-tbl" aria-expanded="true" aria-controls="Ongoing-tbl">
-                    <div class="text-dark fw-bold">On-Going Tickets</div>
+                <button class="accordion-button" style = "background-color: rgba(79, 124, 155,1);" type="button" data-bs-toggle="collapse" data-bs-target="#Ongoing-tbl" aria-expanded="true" aria-controls="Ongoing-tbl">
+                    <div class="text-light fw-bold fs-5 " style="font-family: 'League Spartan', sans-serif;">GAMES ON-GOING</div>
                 </button>
             </h2>
             <!-- BODY -->
@@ -122,13 +141,12 @@
                         <!-- TABLE HEAD -->
                         <thead class="bg-dark text-light">
                             <tr>
-                                <th scope="col">Ticket No</th>
+                                <th scope="col">Game No</th>
                                 <th scope="col">Title</th>
-                                <th scope="col">Requested By</th>
-                                <th scope="col">Department</th>
-                                <th scope="col">Date Requested</th>
-                                <th scope="col">Target Date</th>
-                                <th scope="col">Category</th>
+                                <th scope="col">Dungeon Master</th>
+                                <th scope="col">Tier</th>
+                                <th scope="col">Date Created</th>
+                                <th scope="col">Date Scheduled</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -137,62 +155,48 @@
                         <tbody>
                             <!-- ROW 1 -->
                             <tr>
-                                <th class="align-middle" scope="row">TIX-20231019</th>
-                                <td class="align-middle">Transfer of PC</td>
+                                <th class="align-middle" scope="row">NO-20231019</th>
+                                <td class="align-middle">Lancer: Black Hole Rising</td>
                                 <td class="align-middle">John Doe</td>
-                                <td class="align-middle">Sales Department</td>
+                                <td class="align-middle">Tier 2</td>
                                 <td class="align-middle">2023-10-19</td>
                                 <td class="align-middle">2023-10-23</td>
-                                <td class="align-middle">Hardware Support</td>
-                                <td class="align-middle"><span class="badge rounded-pill text-bg-warning">ongoing</span></td>
-                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                                <td class="align-middle">
+                                    <span class="badge rounded-pill bg-blue">ongoing</span>
+                                </td>
+                                <td class="align-middle">
+                                    <button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button>
+                                </td>
                             </tr>
                             <!-- ROW 2 -->
                             <tr>
-                                <th class="align-middle" scope="row">TIX-20231020</th>
-                                <td class="align-middle">Additional Module Access</td>
+                                <th class="align-middle" scope="row">NO-20231020</th>
+                                <td class="align-middle">Party at Paliset Hall</td>
                                 <td class="align-middle">Rick Shaw</td>
-                                <td class="align-middle">HR Department</td>
+                                <td class="align-middle">Tier 2</td>
                                 <td class="align-middle">2023-10-20</td>
                                 <td class="align-middle">2023-10-27</td>
-                                <td class="align-middle">Access Elevation</td>
-                                <td class="align-middle"><span class="badge rounded-pill text-bg-warning">ongoing</span></td>
-                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                                <td class="align-middle">
+                                    <span class="badge rounded-pill bg-blue">ongoing</span>
+                                </td>
+                                <td class="align-middle">
+                                    <button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button>
+                                </td>
                             </tr>
                             <!-- ROW 3 -->
                             <tr>
-                                <th class="align-middle" scope="row">TIX-20231022</th>
-                                <td class="align-middle">PC Problem</td>
+                                <th class="align-middle" scope="row">NO-20231022</th>
+                                <td class="align-middle">Children of the City S2: Puppets</td>
                                 <td class="align-middle">Erika Weltz</td>
-                                <td class="align-middle">HR Department</td>
+                                <td class="align-middle">Tier 4</td>
                                 <td class="align-middle">2023-10-22</td>
                                 <td class="align-middle">2023-10-26</td>
-                                <td class="align-middle">Hardware Support</td>
-                                <td class="align-middle"><span class="badge rounded-pill text-bg-warning">ongoing</span></td>
-                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
-                            </tr>
-                            <!-- ROW 4 -->
-                            <tr>
-                                <th class="align-middle" scope="row">TIX-20231004</th>
-                                <td class="align-middle">New Report</td>
-                                <td class="align-middle">Sam Son</td>
-                                <td class="align-middle">Accounting Department</td>
-                                <td class="align-middle">2023-10-04</td>
-                                <td class="align-middle">2023-10-10</td>
-                                <td class="align-middle">Software Module</td>
-                                <td class="align-middle"><span class="badge rounded-pill text-bg-warning me-1">ongoing</span><span class="badge rounded-pill text-bg-danger">overdue</span></td>
-                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
-                            </tr>
-                            <tr>
-                                <th class="align-middle" scope="row">TIX-20231010</th>
-                                <td class="align-middle">Bug Detected</td>
-                                <td class="align-middle">Julie Davis</td>
-                                <td class="align-middle">Accounting Department</td>
-                                <td class="align-middle">2023-10-10</td>
-                                <td class="align-middle">2023-10-16</td>
-                                <td class="align-middle">Software Module</td>
-                                <td class="align-middle"><span class="badge rounded-pill text-bg-warning me-1">ongoing</span><span class="badge rounded-pill text-bg-danger">overdue</span></td>
-                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                                <td class="align-middle">
+                                    <span class="badge rounded-pill bg-blue">ongoing</span>
+                                </td>
+                                <td class="align-middle">
+                                    <button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -208,8 +212,8 @@
         <div class="accordion-item">
             <!-- HEADER -->
             <h2 class="accordion-header">
-                <button class="accordion-button bg-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#OnQueue-tbl" aria-expanded="true" aria-controls="OnQueue-tbl">
-                    <div class="text-light fw-bold">On-Queue Tickets</div>
+                <button class="accordion-button" style = "background-color: rgb(68, 72, 75);" type="button" data-bs-toggle="collapse" data-bs-target="#OnQueue-tbl" aria-expanded="true" aria-controls="OnQueue-tbl">
+                    <div class="text-light fw-bold fs-5" style="font-family: 'League Spartan', sans-serif;">GAMES ON-QUEUE</div>
                 </button>
             </h2>
             <!-- BODY -->
@@ -220,13 +224,12 @@
                         <!-- TABLE HEAD -->
                         <thead class="bg-dark text-light">
                             <tr>
-                                <th scope="col">Ticket No</th>
+                                <th scope="col">Game No</th>
                                 <th scope="col">Title</th>
-                                <th scope="col">Requested By</th>
-                                <th scope="col">Department</th>
-                                <th scope="col">Date Requested</th>
-                                <th scope="col">Target Date</th>
-                                <th scope="col">Category</th>
+                                <th scope="col">Dungeon Master</th>
+                                <th scope="col">Tier</th>
+                                <th scope="col">Date Created</th>
+                                <th scope="col">Date Scheduled</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -235,106 +238,128 @@
                         <tbody>
                             <!-- ROW 1 -->
                             <tr>
-                                <th class="align-middle fs-6" scope="row">TIX-20231025</th>
-                                <td class="align-middle fs-6">New PC for employee</td>
+                                <th class="align-middle fs-6" scope="row">NO-20231025</th>
+                                <td class="align-middle fs-6">Lucidity: The Waking and the Walking</td>
                                 <td class="align-middle fs-6">Clark Cena</td>
                                 <td class="align-middle fs-6">Sales Department</td>
                                 <td class="align-middle fs-6">2023-10-25</td>
                                 <td class="align-middle fs-6">2023-10-27</td>
-                                <td class="align-middle fs-6">Hardware Assignment</td>
-                                <td class="align-middle fs-6"><span class="badge rounded-pill text-bg-secondary">On Queue</span></td>
-                                <td class="align-middle fs-6"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                                <td class="align-middle fs-6">
+                                    <span class="badge rounded-pill bg-grey">On Queue</span>
+                                </td>
+                                <td class="align-middle fs-6">
+                                    <button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button>
+                                </td>
                             </tr>
 
                             <!-- ROW 2 -->
                             <tr>
-                                <th class="align-middle" scope="row">TIX-20231024</th>
-                                <td class="align-middle">Incorrect Computation</td>
+                                <th class="align-middle" scope="row">NO-20231024</th>
+                                <td class="align-middle">Cylo: The Waking World</td>
                                 <td class="align-middle">John Morty</td>
                                 <td class="align-middle">Accounting Department</td>
                                 <td class="align-middle">2023-10-06</td>
                                 <td class="align-middle">2023-10-14</td>
-                                <td class="align-middle">Software Module</td>
-                                <td class="align-middle"><span class="badge rounded-pill text-bg-secondary me-1">On Queue</span><span class="badge rounded-pill text-bg-danger">overdue</span></td>
-                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                                <td class="align-middle">
+                                    <span class="badge rounded-pill bg-grey">On Queue</span>
+                                </td>
+                                <td class="align-middle">
+                                    <button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button>
+                                </td>
                             </tr>
 
                             <!-- ROW 3 -->
                             <tr>
-                                <th class="align-middle" scope="row">TIX-20231017</th>
-                                <td class="align-middle">Cannot Print</td>
+                                <th class="align-middle" scope="row">NO-20231017</th>
+                                <td class="align-middle">Wild Beyond the Witchlight Session 0</td>
                                 <td class="align-middle">Adam Black</td>
                                 <td class="align-middle">HighSchool Department</td>
                                 <td class="align-middle">2023-10-05</td>
                                 <td class="align-middle">2023-10-08</td>
-                                <td class="align-middle">Hardware Support</td>
-                                <td class="align-middle"><span class="badge rounded-pill text-bg-secondary me-1">On Queue</span><span class="badge rounded-pill text-bg-danger">overdue</span></td>
-                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                                <td class="align-middle">
+                                    <span class="badge rounded-pill bg-grey">On Queue</span>
+                                </td>
+                                <td class="align-middle">
+                                    <button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button>
+                                </td>
                             </tr>
 
                             <!-- ROW 4 -->
                             <tr>
-                                <th class="align-middle" scope="row">TIX-20231015</th>
-                                <td class="align-middle">New Laptop Request</td>
+                                <th class="align-middle" scope="row">NO-20231015</th>
+                                <td class="align-middle">Party at Paliset Hall Session 2</td>
                                 <td class="align-middle">Donna Addams</td>
                                 <td class="align-middle">HighSchool Department</td>
                                 <td class="align-middle">2023-10-04</td>
                                 <td class="align-middle">2023-10-10</td>
-                                <td class="align-middle">Hardware Assignment</td>
-                                <td class="align-middle"><span class="badge rounded-pill text-bg-secondary me-1">On Queue</span><span class="badge rounded-pill text-bg-danger">overdue</span></td>
+                                <td class="align-middle">
+                                    <span class="badge rounded-pill bg-grey">On Queue</span>
+                                </td>
                                 <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
                             </tr>
 
                             <!-- ROW 5 -->
                             <tr>
-                                <th class="align-middle" scope="row">TIX-20231011</th>
-                                <td class="align-middle">Additional Module Access</td>
+                                <th class="align-middle" scope="row">NO-20231011</th>
+                                <td class="align-middle">Golden Vault: Fire and Darkness</td>
                                 <td class="align-middle">Sandra David</td>
                                 <td class="align-middle">HighSchool Department</td>
                                 <td class="align-middle">2023-10-15</td>
                                 <td class="align-middle">2023-10-26</td>
-                                <td class="align-middle">Software Module</td>
-                                <td class="align-middle"><span class="badge rounded-pill text-bg-secondary">On Queue</span></td>
-                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                                <td class="align-middle">
+                                    <span class="badge rounded-pill bg-grey">On Queue</span>
+                                </td>
+                                <td class="align-middle">
+                                    <button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button>
+                                </td>
                             </tr>
 
                             <!-- ROW 6 -->
                             <tr>
-                                <th class="align-middle" scope="row">TIX-20231012</th>
-                                <td class="align-middle">Additional Workload</td>
+                                <th class="align-middle" scope="row">NO-20231012</th>
+                                <td class="align-middle">Light of Xaryxis</td>
                                 <td class="align-middle">Sandra David</td>
                                 <td class="align-middle">HighSchool Department</td>
                                 <td class="align-middle">2023-10-16</td>
                                 <td class="align-middle">2023-10-26</td>
-                                <td class="align-middle">Software Module</td>
-                                <td class="align-middle"><span class="badge rounded-pill text-bg-secondary">On Queue</span></td>
-                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                                <td class="align-middle">
+                                    <span class="badge rounded-pill bg-grey">On Queue</span>
+                                </td>
+                                <td class="align-middle">
+                                    <button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button>
+                                </td>
                             </tr>
 
                             <!-- ROW 7 -->
                             <tr>
-                                <th class="align-middle" scope="row">TIX-20231013</th>
-                                <td class="align-middle">System override for record</td>
+                                <th class="align-middle" scope="row">NO-20231013</th>
+                                <td class="align-middle">The Isle Of Dread</td>
                                 <td class="align-middle">Amy Lewis</td>
                                 <td class="align-middle">Executive Department</td>
                                 <td class="align-middle">2023-10-15</td>
                                 <td class="align-middle">2023-10-26</td>
-                                <td class="align-middle">Software Module</td>
-                                <td class="align-middle"><span class="badge rounded-pill text-bg-secondary">On Queue</span></td>
-                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                                <td class="align-middle">
+                                    <span class="badge rounded-pill bg-grey">On Queue</span>
+                                </td>
+                                <td class="align-middle">
+                                    <button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button>
+                                </td>
                             </tr>
 
                             <!-- ROW 8 -->
                             <tr>
-                                <th class="align-middle" scope="row">TIX-20231014</th>
-                                <td class="align-middle">New Report Request</td>
+                                <th class="align-middle" scope="row">NO-20231014</th>
+                                <td class="align-middle">The Ruins Of Undermountain</td>
                                 <td class="align-middle">Laura Davis</td>
                                 <td class="align-middle">College Department</td>
                                 <td class="align-middle">2023-10-15</td>
                                 <td class="align-middle">2023-10-24</td>
-                                <td class="align-middle">Software Module</td>
-                                <td class="align-middle"><span class="badge rounded-pill text-bg-secondary">On Queue</span></td>
-                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                                <td class="align-middle">
+                                    <span class="badge rounded-pill bg-grey">On Queue</span>
+                                </td>
+                                <td class="align-middle">
+                                    <button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -350,8 +375,8 @@
         <div class="accordion-item">
             <!-- HEADER -->
             <h2 class="accordion-header">
-                <button class="accordion-button bg-success" type="button" data-bs-toggle="collapse" data-bs-target="#completed-tbl" aria-expanded="true" aria-controls="completed-tbl">
-                    <div class="text-light fw-bold">Completed Tickets</div>
+                <button class="accordion-button" style = "background-color: rgba(108, 135, 38,1);"type="button" data-bs-toggle="collapse" data-bs-target="#completed-tbl" aria-expanded="true" aria-controls="completed-tbl">
+                    <div class="text-light fw-bold fs-5" style="font-family: 'League Spartan', sans-serif;">GAMES COMPLETED</div>
                 </button>
             </h2>
             <!-- BODY -->
@@ -362,13 +387,12 @@
                         <!-- TABLE HEAD -->
                         <thead class="bg-dark text-light">
                             <tr>
-                                <th scope="col">Ticket No</th>
+                                <th scope="col">Game No</th>
                                 <th scope="col">Title</th>
-                                <th scope="col">Requested By</th>
-                                <th scope="col">Department</th>
-                                <th scope="col">Date Requested</th>
-                                <th scope="col">Target Date</th>
-                                <th scope="col">Category</th>
+                                <th scope="col">Dungeon Master</th>
+                                <th scope="col">Tier</th>
+                                <th scope="col">Date Created</th>
+                                <th scope="col">Date Scheduled</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -383,7 +407,6 @@
                                 <td class="align-middle">HR Department</td>
                                 <td class="align-middle">2023-10-06</td>
                                 <td class="align-middle">2023-10-08</td>
-                                <td class="align-middle">Software Module</td>
                                 <td class="align-middle"><span class="badge rounded-pill text-bg-success">completed</span></td>
                                 <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
                             </tr>
@@ -396,7 +419,6 @@
                                 <td class="align-middle">College Department</td>
                                 <td class="align-middle">2023-10-01</td>
                                 <td class="align-middle">2023-10-05</td>
-                                <td class="align-middle">Software Module</td>
                                 <td class="align-middle"><span class="badge rounded-pill text-bg-success">completed</span></td>
                                 <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
                             </tr>
@@ -409,7 +431,6 @@
                                 <td class="align-middle">HR Department</td>
                                 <td class="align-middle">2023-10-06</td>
                                 <td class="align-middle">2023-10-08</td>
-                                <td class="align-middle">Software Module</td>
                                 <td class="align-middle"><span class="badge rounded-pill text-bg-success">completed</span></td>
                                 <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
                             </tr>
@@ -421,6 +442,192 @@
     </section>
 
     <div class=" divider"></div>
+
+    <!-- CANCELED TABLE -->
+    <section class="accordion container-fluid" id="canceled-section">
+        <div class="accordion-item">
+            <!-- HEADER -->
+            <h2 class="accordion-header">
+                <button class="accordion-button" style = "background-color: rgba(156, 31, 31,1);" type="button" data-bs-toggle="collapse" data-bs-target="#canceled-tbl" aria-expanded="true" aria-controls="canceled-tbl">
+                    <div class="text-light fw-bold fs-5" style="font-family: 'League Spartan', sans-serif;">GAMES CANCELED</div>
+                </button>
+            </h2>
+            <!-- BODY -->
+            <div id="canceled-tbl" class = "accordion-collapse collapse" data-bs-parent="canceled-section">
+                <div class="accordion-body">
+                    <!-- Table -->
+                    <table class="table-striped table-responsive-md table-sm table-hover" width="100%">
+                        <!-- TABLE HEAD -->
+                        <thead class="bg-dark text-light">
+                            <tr>
+                                <th scope="col">Game No</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Dungeon Master</th>
+                                <th scope="col">Tier</th>
+                                <th scope="col">Date Created</th>
+                                <th scope="col">Date Scheduled</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <!-- TABLE BODY -->
+                        <tbody>
+                            <!-- ROW 1 -->
+                            <tr>
+                                <th class="align-middle" scope="row">TIX-20231008</th>
+                                <td class="align-middle">Additional Module Access</td>
+                                <td class="align-middle">Erika Weltz</td>
+                                <td class="align-middle">HR Department</td>
+                                <td class="align-middle">2023-10-06</td>
+                                <td class="align-middle">2023-10-08</td>
+                                
+                                <td class="align-middle"><span class="badge rounded-pill text-bg-success">completed</span></td>
+                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                            </tr>
+
+                            <!-- ROW 2 -->
+                            <tr>
+                                <th class="align-middle" scope="row">TIX-20231001</th>
+                                <td class="align-middle">New Report For Student Record</td>
+                                <td class="align-middle">Laura Davis</td>
+                                <td class="align-middle">College Department</td>
+                                <td class="align-middle">2023-10-01</td>
+                                <td class="align-middle">2023-10-05</td>
+                                
+                                <td class="align-middle"><span class="badge rounded-pill text-bg-success">completed</span></td>
+                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                            </tr>
+
+                            <!-- ROW 3 -->
+                            <tr>
+                                <th class="align-middle" scope="row">TIX-20231009</th>
+                                <td class="align-middle">Additional Module Access</td>
+                                <td class="align-middle">Erika Weltz</td>
+                                <td class="align-middle">HR Department</td>
+                                <td class="align-middle">2023-10-06</td>
+                                <td class="align-middle">2023-10-08</td>
+                             
+                                <td class="align-middle"><span class="badge rounded-pill text-bg-success">completed</span></td>
+                                <td class="align-middle"><button class="btn btn-info " data-bs-toggle="modal" data-bs-target="#viewTicketModal">view</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class=" divider"></div>
+    <!------------------------------------------------------------>
+    <!------------------------ MODALS----------------------------->
+    <!------------------------------------------------------------>
+
+    <!------------------------ VIEW MODAL ------------------------>
+    <div class="modal fade " id="viewTicketModal" tabindex="-1" aria-labelledby="view-ticket-label" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+            <div class="modal-header bg-blue" id="modal-header">
+            <h1 class="modal-title fs-5 text-light" id="view-ticket-label">GAME DETAILS FOR <span class="fw-bold" id="modal-ticket-no">GAME-20231006 [On Going]</span></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+            <div class="container">
+                <form class="requires-validation" novalidate>
+                <div class="row">
+
+                    <!-- TIER -->
+                    <label for="tier" class="col-form-label col-2 fw-bold text-end">Tier:</label>
+                    <div class="col-4">
+                        <input type="text" class="form-control form-control-sm" name="tier" id="tier" value="Tier 1: Local Heroes" disabled required>
+                        <div class="invalid-feedback">
+                            This field is required.
+                        </div>
+                    </div>
+                    
+                    <!-- STATUS -->
+                    <label for="status" class="col-form-label col-2 fw-bold text-end">Status:</label>
+                    <div class="col-4">
+                        <input type="text" class=" text-light form-control form-control-sm" style = "background-color: rgba(79, 124, 155,1);" name="field-status" id="field-status" value="On Going" disabled required>
+                    </div>
+
+                    <!-- TITLE -->
+                    <label for="game-title" class="col-form-label col-2 fw-bold text-end">Game Title:</label>
+                    <div class="col-10">
+                        <textarea class="form-control form-control-sm" name="game-title" id="game-title" rows="1" disabled required>Lancer: Black Hole Rising</textarea>
+                        <div class="invalid-feedback">
+                            This field is required.
+                        </div>
+                    </div>
+
+                    <!-- DESCRIPTION -->
+                    <label for="game-description" class="col-form-label col-2 fw-bold text-end">Game Description:</label>
+                    <div class="col-10">
+                        <textarea class="form-control form-control-sm mb-2" name="game-description" id="game-description" rows="4" disabled required>Every year during the winter solstice, Zorhanna Adulare holds a grand gala in Paliset Hall, her palatial retreat in the Feywild. You are hired to infiltrate the gala and steal Zorhanna's shard solitaire, a magical diamond with peculiar properties. As the evening unfolds, you learn that nothing is quite what it seems.</textarea>
+                        <div class="invalid-feedback">
+                            This field is required.
+                        </div>
+                    </div>
+
+                    <!-- DATE CREATED -->
+                    <label for="date-created" class="col-form-label col-2 fw-bold text-end">Date Created:</label>
+                    <div class="col-4">
+                        <input type="date" class="form-control form-control-sm" name="date-created" id="date-created" value="2023-10-10" disabled >
+                    </div>
+
+                    <!-- SCHEDULED DATE -->
+                    <label for="sched-date" class="col-form-label col-2 fw-bold text-end">Scheduled Date:</label>
+                        <div class="col-4">
+                        <input type="date" class="form-control form-control-sm" name="sched-date" id="sched-date" value="2023-10-15" disabled required>
+                        <div class="invalid-feedback">
+                            This field is required.
+                        </div>
+                    </div>
+
+                    <!-- DUNGEON MASTER -->
+                    <label for="dungeon-master" class="col-form-label col-2 fw-bold text-end">Dungeon Master</label>
+                    <div class="col-4">
+                        <input type="text" class="form-control form-control-sm" name="dungeon-master" id="dungeon-master" value="John Doe" disabled required>
+                        <div class="invalid-feedback">
+                            This field is required.
+                        </div>
+                    </div>
+
+                    <!-- PLAYERS -->
+                    <label for="players" class="col-form-label col-2 fw-bold text-end">Players:</label>
+                    <div class="col-4">
+                        <textarea class="form-control form-control-sm" rows="2" name="players" id="players" disabled required>John Michael De Vera, Reece Harris, Ellis Hussain, Callen Boyd</textarea>
+                        <div class="invalid-feedback">
+                            This field is required.
+                        </div>
+                    </div>
+                </div>
+
+                
+                </form>  
+            </div>
+            </div>
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn bg-blue text-light d-none" id="modal-btn-early"  data-bs-dismiss="modal">Start Early</button>
+            <button type="button" class="btn bg-green text-light d-none" id="modal-btn-complete" data-bs-dismiss="modal">Completed Game</button>
+            <button type="button" class="btn bg-red text-light d-none" id="modal-btn-cancel" data-bs-dismiss="modal">Cancel Game</button>
+            <button type="button" class="btn btn-success d-none" id="modal-btn-save" data-bs-dismiss="modal">Save</button>
+            <button type="button" class="btn btn-primary d-none" id="modal-btn-create">Create Ticket</button>
+            
+            </div>
+
+        </div>
+        </div>
+    </div>
+
+
+    <!------------------------------------------------------------>
+    <!------------------------ FOOTER----------------------------->
+    <!------------------------------------------------------------>
+    
 
     <footer class="bg-light fixed-bottom">
         <div class="container-fluid py-2">
