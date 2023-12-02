@@ -107,8 +107,11 @@ document.addEventListener('DOMContentLoaded', function() {
             let SchedCreated = document.getElementById('sched-date');
             SchedCreated.value = columns[4].textContent;
 
-            let tier = document.getElementById('tier');
-            tier.value = columns[2].textContent;
+            let description = document.getElementById('game-description');
+            description.value = columns[7].textContent;
+
+            let players = document.getElementById('players');
+            players.value = columns[8].textContent;
 
             let modalTitle  = document.getElementById('modal-game-title');
             modalTitle.textContent = columns[0].textContent;
@@ -118,15 +121,9 @@ document.addEventListener('DOMContentLoaded', function() {
             ChangeTierTitle(columns[2].textContent)
 
         });
-            
-
         
     });
     
-
-
-
-
 });
 
 
