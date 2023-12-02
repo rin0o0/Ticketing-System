@@ -1,4 +1,5 @@
 // -----------------------------------FUNCTIONS---------------------------------------
+
 function changeModalHeaderColor(status){
     let modalHeader = document.getElementById('modal-header');
     modalHeader.classList.remove('bg-blue','bg-red','bg-green','bg-grey');
@@ -66,21 +67,41 @@ function ChangeTierTitle(tier){
     } 
 }
 
+let toastCtr = 0;
+function generateToast(bgColor = "", textMessage =""){
+    toastCtr++;
+    let toastHtml = `<div class="toast align-items-center ${bgColor} border-0" role="alert" aria-live="assertive" aria-atomic="true"  id="liveToast${toastCtr}">
+                        <div class="d-flex">
+                        <div class="toast-body">
+                            ${textMessage}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                    </div>`;
+    const toastWrapper = document.querySelector('.toast-container');
+    toastWrapper.innerHTML += toastHtml;
+
+    const toastMain = document.querySelector('#liveToast'+toastCtr);
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastMain);
+    toastBootstrap.show();
+}
 // ---------------------------------MAIN CONTENT-------------------------------------
 
 document.addEventListener('DOMContentLoaded', function() {
+
+    
 
     // ------------------HIDING UNNECESSARY BUTTONS---------------------
     const rows = document.querySelectorAll('table tbody tr');
     rows.forEach(row => {
             const columns = row.getElementsByTagName('td');
             if(columns[5].textContent == 'Completed'){
-                let removeButtons = columns[6].querySelectorAll(".edit-ticket, .delete-ticket");
+                let removeButtons = columns[6].querySelectorAll(".edit-game, .delete-game");
                 removeButtons[0].classList.add('d-none'); //edit
                 removeButtons[1].classList.add('d-none'); //delete
             }
             if(columns[5].textContent == 'Canceled'){
-                let removeButtons = columns[6].querySelectorAll(".edit-ticket, .delete-ticket");
+                let removeButtons = columns[6].querySelectorAll(".edit-game");
                 removeButtons[0].classList.add('d-none'); //edit
             }
         });
@@ -88,15 +109,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
 
     // -------------------------VIEW BUTTON---------------------------
-    viewButton = document.querySelectorAll('.view-ticket');
+    viewButton = document.querySelectorAll('.view-game');
     viewButton.forEach(function(button){
         button.addEventListener('click', function(){
             let row = this.parentElement.parentElement;
             let columns = row.getElementsByTagName('td');
-            let ticketNo = row.getElementsByTagName('th');
+            let gameNo = row.getElementsByTagName('th');
 
             let title = document.getElementById('game-no');
-            title.textContent = ticketNo[0].textContent;
+            title.textContent = gameNo[0].textContent;
             
             let DungeonMaster = document.getElementById('dungeon-master');
             DungeonMaster.value = columns[1].textContent;
@@ -106,7 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             let SchedCreated = document.getElementById('sched-date');
             SchedCreated.value = columns[4].textContent;
-
             let description = document.getElementById('game-description');
             description.value = columns[7].textContent;
 
@@ -123,6 +143,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
     });
+
+
+    deleteButton = document.querySelectorAll('.delete-game');
+    deleteButton.forEach(function(button){
+        button.addEventListener('click', function(){
+            let row           = this.parentElement.parentElement;
+            const gameNo    = row.getElementsByTagName('th');
+            const modalDelete = document.querySelector("#deleteGameModal")
+            const myModal     = new bootstrap.Modal(modalDelete);
+            const modalText   = modalDelete.querySelector("#delete-prompt"); 
+            modalText.innerHTML = `Are you sure you want to delete <strong>${gameNo[0].textContent}</strong> ?`;
+            myModal.show();
+            
+            const confirmDelBtn = modalDelete.querySelector("#modal-btn-delete");
+            confirmDelBtn.addEventListener("click", function(){
+                myModal.hide();
+                row.remove();        
+                generateToast("text-bg-danger",`Game <strong>${gameNo[0].textContent}</strong> DELETED`);
+                });
+            });
+        });
     
 });
 
