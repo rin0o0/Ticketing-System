@@ -1,5 +1,3 @@
-// -----------------------------------FUNCTIONS---------------------------------------
-
 function changeModalHeaderColor(status){
     let modalHeader = document.getElementById('modal-header');
     modalHeader.classList.remove('bg-blue','bg-red','bg-green','bg-grey');
@@ -87,12 +85,22 @@ function generateToast(bgColor = "", textMessage =""){
 }
 
 function assignRowFieldValues(row){
+
     let columns = row.getElementsByTagName('td');
     let gameNo = row.getElementsByTagName('th');
 
-    let title = document.getElementById('game-title');
-    title.value = columns[0].textContent;
-    
+    let modalTitle  = document.getElementById('modal-game-title');
+    modalTitle.textContent = gameNo[0].textContent;
+
+    let title = document.getElementById('game-no');
+    title.textContent = columns[0].textContent;
+
+    let description = document.getElementById('game-description');
+    description.value = columns[8].textContent;
+
+    let players = document.getElementById('players');
+    players.value = columns[9].textContent;
+
     let DungeonMaster = document.getElementById('dungeon-master');
     DungeonMaster.value = columns[1].textContent;
 
@@ -101,20 +109,14 @@ function assignRowFieldValues(row){
 
     let SchedCreated = document.getElementById('sched-date');
     SchedCreated.value = columns[4].textContent;
-    let description = document.getElementById('game-description');
-    description.value = columns[7].textContent;
 
-    let players = document.getElementById('players');
-    players.value = columns[8].textContent;
+    let time = document.getElementById('time');
+    time.value = columns[7].textContent;
 
-    let modalTitle  = document.getElementById('modal-game-title');
-    modalTitle.textContent = gameNo[0].textContent;
-
-    console.log = gameNo[0].textContent;
-    changeModalHeaderColor(columns[5].textContent);
-    changeStatusInModal(columns[5].textContent);
-    ChangeTierTitle(columns[2].textContent);
-
+    
+    changeModalHeaderColor(columns[6].textContent)
+    changeStatusInModal(columns[6].textContent)
+    ChangeTierTitle(columns[2].textContent)
 }
 
 function breakByHTMLChars(statusHtml = ""){
@@ -126,7 +128,7 @@ function breakByHTMLChars(statusHtml = ""){
 
 function showHideModalButtons(row, state = '') {
     const columns = row.getElementsByTagName('td');
-    const status = breakByHTMLChars(columns[5].innerHTML);
+    const status = breakByHTMLChars(columns[6].innerHTML);
     const modalMain = document.querySelector('#viewGameModal');
 
     removeBtns = modalMain.querySelectorAll("#modal-btn-early,#modal-btn-complete,#modal-btn-save,#modal-btn-create,#modal-btn-cancel");
@@ -183,43 +185,41 @@ function showHideModalButtons(row, state = '') {
         }
     }
 }
+
 // ---------------------------------MAIN CONTENT-------------------------------------
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    
 
-    // ------------------HIDING UNNECESSARY ROW BUTTONS---------------------
+    // ------------------HIDING UNNECESSARY BUTTONS---------------------
     const rows = document.querySelectorAll('table tbody tr');
     rows.forEach(row => {
             const columns = row.getElementsByTagName('td');
-            if(columns[5].textContent == 'Completed'){
-                let removeButtons = columns[6].querySelectorAll(".edit-game, .delete-game");
+            if(columns[6].textContent == 'Completed'){
+                let removeButtons = columns[7].querySelectorAll(".edit-game, .delete-game");
                 removeButtons[0].classList.add('d-none'); //edit
                 removeButtons[1].classList.add('d-none'); //delete
             }
-            if(columns[5].textContent == 'Canceled'){
-                let removeButtons = columns[6].querySelectorAll(".edit-game");
+            if(columns[6].textContent == 'Canceled'){
+                let removeButtons = columns[7].querySelectorAll(".edit-game");
                 removeButtons[0].classList.add('d-none'); //edit
             }
         });
+
+        
 
     // -------------------------VIEW BUTTON---------------------------
     viewButton = document.querySelectorAll('.view-game');
     viewButton.forEach(function(button){
         button.addEventListener('click', function(){
             let row = this.parentElement.parentElement;
-            let gameNo = row.getElementsByTagName('th');
-
-            let modalTitle  = document.getElementById('modal-game-title');
-            modalTitle.textContent = gameNo[0].textContent;
-
             assignRowFieldValues(row);
             showHideModalButtons(row);
         });
-        
     });
 
-     // -------------------------EDIT BUTTON---------------------------
+    // -------------------------EDIT BUTTON---------------------------
     editButton = document.querySelectorAll('.edit-game');
     editButton.forEach(function(button){
         button.addEventListener('click', function(){
@@ -234,20 +234,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             showHideModalButtons(row,"edit");
         });
-        
     });
 
     // -------------------------MODAL SAVE BUTTON---------------------------
-    mdlSaveButton = document.querySelectorAll('#modal-btn-save');
-        button.addEventListener('click', function(){
-            const columns = activeRow.querySelectorAll('td');
-            const modalMain = document.querySelector('#viewGameModal');
-
-            columns[0].textContent = modalMain.querySelector('#request-title').value 
-
-    });
-        
-
 
     // -------------------------DELETE BUTTON---------------------------
     deleteButton = document.querySelectorAll('.delete-game');
@@ -269,12 +258,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
         });
-
-    
     
 });
-
-
-
-
-
