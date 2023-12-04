@@ -92,7 +92,7 @@ function assignRowFieldValues(row){
     let modalTitle  = document.getElementById('modal-game-title');
     modalTitle.textContent = gameNo[0].textContent;
 
-    let title = document.getElementById('game-no');
+    let title = document.getElementById('game-title');
     title.textContent = columns[0].textContent;
 
     let description = document.getElementById('game-description');
@@ -190,7 +190,7 @@ function showHideModalButtons(row, state = '') {
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    
+    let activeRow = null;
 
     // ------------------HIDING UNNECESSARY BUTTONS---------------------
     const rows = document.querySelectorAll('table tbody tr');
@@ -214,6 +214,7 @@ document.addEventListener('DOMContentLoaded', function() {
     viewButton.forEach(function(button){
         button.addEventListener('click', function(){
             let row = this.parentElement.parentElement;
+            activeRow = row;
             assignRowFieldValues(row);
             showHideModalButtons(row);
         });
@@ -224,12 +225,15 @@ document.addEventListener('DOMContentLoaded', function() {
     editButton.forEach(function(button){
         button.addEventListener('click', function(){
             let row = this.parentElement.parentElement;
+            activeRow = row;
             assignRowFieldValues(row);
             
             const inputFields = document.querySelectorAll(".form-control");
             inputFields.forEach(input => {
-                if(input.id !="field-status" && "date-created")
-                input.removeAttribute("disabled");
+                if(input.id !="field-status" && input.id != "date-created"){
+                    input.removeAttribute("disabled");
+                }
+                
             });
 
             showHideModalButtons(row,"edit");
@@ -237,6 +241,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // -------------------------MODAL SAVE BUTTON---------------------------
+    mdlSaveButton = document.querySelector('#modal-btn-save');
+    mdlSaveButton.addEventListener('click', function(){
+        const columns  = activeRow.querySelectorAll('td');
+        const modalMain = document.querySelector('#viewGameModal');
+        
+        columns[0].textContent = modalMain.querySelector('#game-title').value
+        columns[1].textContent = modalMain.querySelector('#dungeon-master').value
+        columns[2].textContent = modalMain.querySelector('#tier').value
+        columns[3].textContent = modalMain.querySelector('#date-created').value
+        columns[4].textContent = modalMain.querySelector('#sched-date').value
+        columns[5].textContent = modalMain.querySelector('#time').value
+        columns[8].textContent = modalMain.querySelector('#game-description').value
+        columns[9].textContent = modalMain.querySelector('#players').value
+    });
+
 
     // -------------------------DELETE BUTTON---------------------------
     deleteButton = document.querySelectorAll('.delete-game');
