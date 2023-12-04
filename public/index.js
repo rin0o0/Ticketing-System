@@ -90,10 +90,10 @@ function assignRowFieldValues(row){
     let gameNo = row.getElementsByTagName('th');
 
     let modalTitle  = document.getElementById('modal-game-title');
-    modalTitle.textContent = gameNo[0].textContent;
+    modalTitle.textContent = gameNo[0].textContent; 
 
     let title = document.getElementById('game-title');
-    title.textContent = columns[0].textContent;
+    title.value = columns[0].textContent;
 
     let description = document.getElementById('game-description');
     description.value = columns[8].textContent;
@@ -205,6 +205,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 let removeButtons = columns[7].querySelectorAll(".edit-game");
                 removeButtons[0].classList.add('d-none'); //edit
             }
+
+            
         });
 
         
@@ -217,6 +219,8 @@ document.addEventListener('DOMContentLoaded', function() {
             activeRow = row;
             assignRowFieldValues(row);
             showHideModalButtons(row);
+            console.log(activeRow);
+            
         });
     });
 
@@ -227,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let row = this.parentElement.parentElement;
             activeRow = row;
             assignRowFieldValues(row);
-            
+            console.log(activeRow);
             const inputFields = document.querySelectorAll(".form-control");
             inputFields.forEach(input => {
                 if(input.id !="field-status" && input.id != "date-created"){
@@ -245,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
     mdlSaveButton.addEventListener('click', function(){
         const columns  = activeRow.querySelectorAll('td');
         const modalMain = document.querySelector('#viewGameModal');
-        
+
         columns[0].textContent = modalMain.querySelector('#game-title').value
         columns[1].textContent = modalMain.querySelector('#dungeon-master').value
         columns[2].textContent = modalMain.querySelector('#tier').value
@@ -254,6 +258,15 @@ document.addEventListener('DOMContentLoaded', function() {
         columns[5].textContent = modalMain.querySelector('#time').value
         columns[8].textContent = modalMain.querySelector('#game-description').value
         columns[9].textContent = modalMain.querySelector('#players').value
+    });
+
+    modalWindow =  document.querySelector('#viewGameModal');
+    modalWindow.addEventListener("hidden.bs.modal", function(){
+        const inputFields = document.querySelectorAll(".form-control");
+        inputFields.forEach(input => {
+            input.setAttribute("disabled","");
+        });
+
     });
 
 
