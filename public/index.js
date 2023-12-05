@@ -186,11 +186,111 @@ function showHideModalButtons(row, state = '') {
     }
 }
 
+function clearFieldValues() {
+    let modalMain = document.querySelector('#viewGameModal');
+    let modalTitle  = document.getElementById('modal-game-title');
+
+    let tier = document.getElementById('tier');
+    let status      = document.getElementById('field-status');
+    let title = document.getElementById('game-title');
+    let description = document.getElementById('game-description');
+    let players    = document.getElementById('players');
+    let dateCreated = document.getElementById('date-created');
+    let SchedCreated = document.getElementById('sched-date');
+    let DungeonMaster = document.getElementById('dungeon-master');
+    let time = document.getElementById('time');
+
+    let date = new Date();
+    date.setDate(date.getDate() + 7);
+    newDateTarget = date.toISOString().split('T')[0];
+    
+    
+    changeModalHeaderColor("add");
+    changeStatusInModal("On Queue")
+    tier.value    = '';
+    status.value      = 'On Queue';
+    title.value       = '';
+    description.value = '';
+    players.value = '';
+    dateCreated.value = new Date().toISOString().split('T')[0];
+    SchedCreated.value  = newDateTarget;
+    DungeonMaster.value = '';
+
+    modalTitle.textContent = 'A New Game';
+
+    status.setAttribute("disabled","");
+    dateCreated.setAttribute("disabled","");
+
+    removeBtns = modalMain.querySelectorAll("#modal-btn-early,#modal-btn-complete,#modal-btn-save,#modal-btn-create,#modal-btn-cancel");
+    removeBtns.forEach(btnCol => {
+        btnCol.classList.add('d-none');
+    });
+    showBtns = modalMain.querySelectorAll("#modal-btn-create");
+    showBtns.forEach(btnCol => {
+        btnCol.classList.remove('d-none');
+    });
+    
+}
+
+function addTicketRecord(){
+    let newGameNo = `NO-${new Date().getFullYear()}${new Date().getMonth()+1}${new Date().getDate()}`
+    let title = document.getElementById('game-title');
+    let DungeonMaster = document.getElementById('dungeon-master');
+    let tier = document.getElementById('tier');
+    let dateCreated = document.getElementById('date-created');
+    let SchedDate = document.getElementById('sched-date');
+    let time = document.getElementById('time');
+    let status      = document.getElementById('field-status');
+    let description = document.getElementById('game-description');
+    let players    = document.getElementById('players');
+
+    
+    const tblRow   = document.querySelector("#table-onqueue");
+    const tblBody  = tblRow.querySelector('tbody');
+
+    let newRow     = tblBody.insertRow();
+
+    let col1 = newRow.insertCell(0); //game no
+    let col2 = newRow.insertCell(1); //game title
+    let col3 = newRow.insertCell(2); //dungeon master
+    let col4 = newRow.insertCell(3); //tier
+    let col5 = newRow.insertCell(4); //date created
+    let col6 = newRow.insertCell(5); //sched date
+    let col7 = newRow.insertCell(6); // time
+    let col8 = newRow.insertCell(7); // status
+    let col9 = newRow.insertCell(8); //buttons
+    let col10 = newRow.insertCell(9); //description
+    let col11 = newRow.insertCell(10); //players
+
+    col1.outerHTML = `<th class="align-middle fs-6">${newGameNo}</th>`;
+    col2.outerHTML = `<td class="align-middle fs-6">${title.value}</td>`;
+    col3.outerHTML = `<td class="align-middle fs-6">${DungeonMaster.value}</td>`;
+    col4.outerHTML = `<td class="align-middle fs-6">${tier.value}</td>`;
+    col5.outerHTML = `<td class="align-middle fs-6">${dateCreated.value}</td>`;
+    col6.outerHTML = `<td class="align-middle fs-6">${SchedDate.value}</td>`;
+    col7.outerHTML = `<td class="align-middle fs-6">${time.value}</td>`;
+    col8.outerHTML = `<td class="align-middle fs-6"><span class="badge rounded-pill bg-grey">${status.value}</span></td>`;
+
+    col9.outerHTML = `<td class="align-middle text-center">
+                        <button class="btn btn-info view-game" data-bs-toggle="modal" data-bs-target="#viewGameModal">view</button>
+                        <button class="btn btn-warning edit-game" data-bs-toggle="modal" data-bs-target="#viewGameModal">Edit</button>
+                        <button class="btn btn-danger delete-game" >Delete</button>
+                    </td>`;
+
+    col10.outerHTML = `<td class="align-middle d-none">${description.value}</td>`;
+    col11.outerHTML = `<td class="align-middle d-none">${players.value}</td>`;
+
+    generateToast("text-bg-primary",`Game <strong>${newGameNo[0].textContent}</strong> ADDED`);
+
+
+}
+
 // ---------------------------------MAIN CONTENT-------------------------------------
 
 document.addEventListener('DOMContentLoaded', function() {
 
     let activeRow = null;
+    let modalView = new bootstrap.Modal('#viewGameModal');
 
     // ------------------HIDING UNNECESSARY BUTTONS---------------------
     const rows = document.querySelectorAll('table tbody tr');
@@ -243,6 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showHideModalButtons(row,"edit");
         });
     });
+    
 
     // -------------------------MODAL SAVE BUTTON---------------------------
     mdlSaveButton = document.querySelector('#modal-btn-save');
@@ -271,6 +372,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
     });
+
+    // -------------------------ADD BUTTON---------------------------
+    addButton = document.querySelector('#add-schedule');
+    addButton.addEventListener('click', function(){
+
+    
+        clearFieldValues()
+        const inputFields = document.querySelectorAll(".form-control");
+        inputFields.forEach(input => {
+            if(input.id !="field-status" && input.id != "date-created"){
+                input.removeAttribute("disabled");
+            }
+        });
+
+        // -------------------------CREATE BUTTON---------------------------
+        const createButton = document.querySelector("#modal-btn-create");
+        createButton.addEventListener('click', function(){
+            addTicketRecord()
+            modalView.hide()
+            
+        });
+    });
+
+    
+
+
+
+
 
 
     // -------------------------DELETE BUTTON---------------------------
