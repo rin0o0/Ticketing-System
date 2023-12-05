@@ -233,7 +233,8 @@ function clearFieldValues() {
 }
 
 function addTicketRecord(){
-    let newGameNo = `NO-${new Date().getFullYear()}${new Date().getMonth()+1}${new Date().getDate()}`
+    let month = (new Date().getUTCMonth() + 1).toString().padStart(2, '0');
+    let newGameNo = `NO-${new Date().getUTCFullYear()}${month}${new Date().getUTCDate()}`;
     let title = document.getElementById('game-title');
     let DungeonMaster = document.getElementById('dungeon-master');
     let tier = document.getElementById('tier');
@@ -262,14 +263,14 @@ function addTicketRecord(){
     let col10 = newRow.insertCell(9); //description
     let col11 = newRow.insertCell(10); //players
 
-    col1.outerHTML = `<th class="align-middle fs-6">${newGameNo}</th>`;
-    col2.outerHTML = `<td class="align-middle fs-6">${title.value}</td>`;
-    col3.outerHTML = `<td class="align-middle fs-6">${DungeonMaster.value}</td>`;
-    col4.outerHTML = `<td class="align-middle fs-6">${tier.value}</td>`;
-    col5.outerHTML = `<td class="align-middle fs-6">${dateCreated.value}</td>`;
-    col6.outerHTML = `<td class="align-middle fs-6">${SchedDate.value}</td>`;
-    col7.outerHTML = `<td class="align-middle fs-6">${time.value}</td>`;
-    col8.outerHTML = `<td class="align-middle fs-6"><span class="badge rounded-pill bg-grey">${status.value}</span></td>`;
+    col1.outerHTML = `<th class="align-middle">${newGameNo}</th>`;
+    col2.outerHTML = `<td class="align-middle">${title.value}</td>`;
+    col3.outerHTML = `<td class="align-middle">${DungeonMaster.value}</td>`;
+    col4.outerHTML = `<td class="align-middle">${tier.value}</td>`;
+    col5.outerHTML = `<td class="align-middle">${dateCreated.value}</td>`;
+    col6.outerHTML = `<td class="align-middle">${SchedDate.value}</td>`;
+    col7.outerHTML = `<td class="align-middle">${time.value}</td>`;
+    col8.outerHTML = `<td class="align-middle text-center"><span class="badge rounded-pill bg-grey">${status.value}</span></td>`;
 
     col9.outerHTML = `<td class="align-middle text-center">
                         <button class="btn btn-info view-game" data-bs-toggle="modal" data-bs-target="#viewGameModal">view</button>
@@ -281,7 +282,6 @@ function addTicketRecord(){
     col11.outerHTML = `<td class="align-middle d-none">${players.value}</td>`;
 
     generateToast("text-bg-primary",`Game <strong>${newGameNo[0].textContent}</strong> ADDED`);
-
 
 }
 
