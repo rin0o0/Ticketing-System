@@ -249,6 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
     mdlSaveButton.addEventListener('click', function(){
         const columns  = activeRow.querySelectorAll('td');
         const modalMain = document.querySelector('#viewGameModal');
+        const gameNo    = activeRow.getElementsByTagName('th');
 
         columns[0].textContent = modalMain.querySelector('#game-title').value
         columns[1].textContent = modalMain.querySelector('#dungeon-master').value
@@ -258,6 +259,8 @@ document.addEventListener('DOMContentLoaded', function() {
         columns[5].textContent = modalMain.querySelector('#time').value
         columns[8].textContent = modalMain.querySelector('#game-description').value
         columns[9].textContent = modalMain.querySelector('#players').value
+        
+        generateToast("text-bg-success",`Game <strong>${gameNo[0].textContent}</strong> UPDATED`);
     });
 
     modalWindow =  document.querySelector('#viewGameModal');
@@ -290,5 +293,4 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
         });
-    
 });
