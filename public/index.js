@@ -84,6 +84,17 @@ function generateToast(bgColor = "", textMessage =""){
     toastBootstrap.show();
 }
 
+// function formatDate(date) {
+//     var hours = date.getHours();
+//     var minutes = date.getMinutes();
+//     var ampm = hours >= 12 ? 'pm' : 'am';
+//     hours = hours % 12;
+//     hours = hours ? hours : 12; // the hour '0' should be '12'
+//     minutes = minutes < 10 ? '0'+minutes : minutes;
+//     var strTime = hours + ':' + minutes + ' ' + ampm;
+//     return (date.getMonth()+1) + " " + date.getDate() + " " + date.getFullYear() + "  " + strTime;
+// }
+
 function assignRowFieldValues(row){
 
     let columns = row.getElementsByTagName('td');
@@ -107,13 +118,6 @@ function assignRowFieldValues(row){
     let dateCreated = document.getElementById('date-created');
     dateCreated.value = columns[3].textContent;
 
-    let SchedCreated = document.getElementById('sched-date');
-    SchedCreated.value = columns[4].textContent;
-
-    let time = document.getElementById('time');
-    time.value = columns[7].textContent;
-
-    
     changeModalHeaderColor(columns[6].textContent)
     changeStatusInModal(columns[6].textContent)
     ChangeTierTitle(columns[2].textContent)
@@ -245,23 +249,27 @@ function addTicketRecord(){
     let description = document.getElementById('game-description');
     let players    = document.getElementById('players');
 
-    
-    const tblRow   = document.querySelector("#table-onqueue");
-    const tblBody  = tblRow.querySelector('tbody');
+    let tblBody  = ""
+    let tblRow  = ""
+    let newRow = ""
 
-    let newRow     = tblBody.insertRow();
+    tblRow   = document.querySelector("#table-onqueue");
+    tblBody  = tblRow.querySelector('tbody');
 
-    let col1 = newRow.insertCell(0); //game no
-    let col2 = newRow.insertCell(1); //game title
-    let col3 = newRow.insertCell(2); //dungeon master
-    let col4 = newRow.insertCell(3); //tier
-    let col5 = newRow.insertCell(4); //date created
-    let col6 = newRow.insertCell(5); //sched date
-    let col7 = newRow.insertCell(6); // time
-    let col8 = newRow.insertCell(7); // status
-    let col9 = newRow.insertCell(8); //buttons
-    let col10 = newRow.insertCell(9); //description
-    let col11 = newRow.insertCell(10); //players
+    newRow     = tblBody.insertRow();
+
+
+    col1 = newRow.insertCell(0); //game no
+    col2 = newRow.insertCell(1); //game title
+    col3 = newRow.insertCell(2); //dungeon master
+    col4 = newRow.insertCell(3); //tier
+    col5 = newRow.insertCell(4); //date created
+    col6 = newRow.insertCell(5); //sched date
+    col7 = newRow.insertCell(6); // time
+    col8 = newRow.insertCell(7); // status
+    col9 = newRow.insertCell(8); //buttons
+    col10 = newRow.insertCell(9); //description
+    col11 = newRow.insertCell(10); //players
 
     col1.outerHTML = `<th class="align-middle">${newGameNo}</th>`;
     col2.outerHTML = `<td class="align-middle">${title.value}</td>`;
@@ -277,7 +285,7 @@ function addTicketRecord(){
                         <button class="btn btn-warning edit-game" data-bs-toggle="modal" data-bs-target="#viewGameModal">Edit</button>
                         <button class="btn btn-danger delete-game" >Delete</button>
                     </td>`;
-
+                    
     col10.outerHTML = `<td class="align-middle d-none">${description.value}</td>`;
     col11.outerHTML = `<td class="align-middle d-none">${players.value}</td>`;
 
@@ -306,7 +314,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 removeButtons[0].classList.add('d-none'); //edit
             }
 
-            
         });
 
         
@@ -316,8 +323,13 @@ document.addEventListener('DOMContentLoaded', function() {
     viewButton.forEach(function(button){
         button.addEventListener('click', function(){
             let row = this.parentElement.parentElement;
+            let columns = row.getElementsByTagName('td');
             activeRow = row;
             assignRowFieldValues(row);
+
+            let SchedCreated = document.getElementById('sched-date');
+            SchedCreated.value = columns[4].textContent
+
             showHideModalButtons(row);
             console.log(activeRow);
             
@@ -329,8 +341,17 @@ document.addEventListener('DOMContentLoaded', function() {
     editButton.forEach(function(button){
         button.addEventListener('click', function(){
             let row = this.parentElement.parentElement;
+            let columns = row.getElementsByTagName('td');
             activeRow = row;
             assignRowFieldValues(row);
+
+            let d = columns[4].textContent;
+            let SchedCreated = document.getElementById('sched-date');
+            SchedCreated.value = d.toLocaleString();
+
+
+            console.log(d.toLocaleString())
+
             console.log(activeRow);
             const inputFields = document.querySelectorAll(".form-control");
             inputFields.forEach(input => {
@@ -387,12 +408,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // -------------------------CREATE BUTTON---------------------------
-        const createButton = document.querySelector("#modal-btn-create");
-        createButton.addEventListener('click', function(){
-            addTicketRecord()
-            modalView.hide()
-            
-        });
+        
+    });
+
+    const createButton = document.querySelector("#modal-btn-create");
+    createButton.addEventListener('click', function(){
+        addTicketRecord()
+        modalView.hide()
+        
     });
 
     
