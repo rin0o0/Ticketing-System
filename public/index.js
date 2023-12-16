@@ -396,12 +396,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     
-
-
-
-
-
-
     // -------------------------DELETE BUTTON---------------------------
     deleteButton = document.querySelectorAll('.delete-game');
     deleteButton.forEach(function(button){
