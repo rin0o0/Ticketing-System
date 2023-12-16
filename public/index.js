@@ -1,11 +1,5 @@
 currentRow = null;
 
-function addGlobalEventListener(type,selector,callback){
-    document.addEventListener(type, e => {
-        if(e.target.macthes(selector)) callback(e);
-    });
-}
-
 function changeModalHeaderColor(status){
     let modalHeader = document.getElementById('modal-header');
     modalHeader.classList.remove('bg-blue','bg-red','bg-green','bg-grey','bg-primary');
@@ -202,9 +196,6 @@ function clearFieldValues() {
     let SchedCreated = document.getElementById('sched-date');
     let DungeonMaster = document.getElementById('dungeon-master');
     
-
-    let date = new Date();
-    
     
     
     changeModalHeaderColor("add");
@@ -235,9 +226,40 @@ function clearFieldValues() {
 }
 
 
+ongoingGame = 0;
+onqueueGame = 0;
+completedGame = 0;
+cancelledGame = 0;
+
+function gameCtr(status){
+    
+    if (status == 'Ongoing'){
+        ongoingGame++;
+        let ongoingGameNo = document.querySelector(".ongoingGameNo")
+        ongoingGameNo.textContent = ongoingGame;
+    }
+    if (status == 'On Queue'){
+        onqueueGame++;
+        let onqueueGameNo = document.querySelector(".onqueueGameNo")
+        onqueueGameNo.textContent = onqueueGame;
+    }
+    if (status == 'Completed'){
+        completedGame++;
+        let completedGameNo = document.querySelector(".completedGameNo")
+        completedGameNo.textContent = completedGame;
+    }
+    if (status == 'Canceled'){
+        cancelledGame++;
+        let cancelledGameNo = document.querySelector(".cancelledGameNo")
+        cancelledGameNo.textContent = cancelledGame;
+    }
+}
+
+
 function addTicketRecord(){
     let month = (new Date().getUTCMonth() + 1).toString().padStart(2, '0');
     let newGameNo = `NO-${new Date().getUTCFullYear()}${month}${new Date().getUTCDate()}`;
+    
     let title = document.getElementById('game-title');
     let DungeonMaster = document.getElementById('dungeon-master');
     let tier = document.getElementById('tier');
@@ -256,7 +278,10 @@ function addTicketRecord(){
 
     newRow     = tblBody.insertRow();
 
-
+    let modalHeader = document.getElementById('modal-header');
+    modalHeader.classList.remove('bg-primary');
+    modalHeader.classList.add('bg-grey');
+    
     col1 = newRow.insertCell(0); //game no
     col2 = newRow.insertCell(1); //game title
     col3 = newRow.insertCell(2); //dungeon master
@@ -276,36 +301,18 @@ function addTicketRecord(){
     col6.outerHTML = `<td class="align-middle">${SchedDate.value}</td>`;
     col7.outerHTML = `<td class="align-middle text-center"><span class="badge rounded-pill bg-grey">${status.value}</span></td>`;
     col8.outerHTML = `<td class="align-middle text-center">
-                        <button class="btn btn-info view-game" data-bs-toggle="modal" data-bs-target="#viewGameModal">view</button>
+                        <button class="btn btn-info view-game" data-bs-toggle="modal" data-bs-target="#viewGameModal">View</button>
                         <button class="btn btn-warning edit-game" data-bs-toggle="modal" data-bs-target="#viewGameModal">Edit</button>
                         <button class="btn btn-danger delete-game" >Delete</button>
                     </td>`;
                     
     col9.outerHTML = `<td class="align-middle d-none">${description.value}</td>`;
     col10.outerHTML = `<td class="align-middle d-none">${players.value}</td>`;
-
-    generateToast("text-bg-primary",`Game <strong>${newGameNo[0].textContent}</strong> ADDED`);
-
+    generateToast("text-bg-primary",`Game <strong>${newGameNo}</strong> ADDED`);
+    
+    
 }
 
-function autoOnGoing(row,scheduledDate){
-    const schedDate =  Date.parse(scheduledDate);
-    let todayDate = new Date()
-    let todayDateFormat = todayDate.toISOString().split('T')[0];
-    const CurrDate = Date.parse(todayDateFormat);
-
-    const columns = row.getElementsByTagName('td');
-    if (CurrDate > schedDate){
-        columns[5].innerHTML = `<span class="badge rounded-pill bg-blue text-light">Ongoing</span>`
-        let modalHeader = document.getElementById('modal-header');
-        modalHeader.classList.add('bg-blue');
-    }
-    if (CurrDate < schedDate){
-        columns[5].innerHTML = `<span class="badge rounded-pill bg-grey text-light">On Queue</span>`
-        let modalHeader = document.getElementById('modal-header');
-        modalHeader.classList.add('bg-grey');
-    }
-}
 
 
 // ---------------------------------MAIN CONTENT-------------------------------------
@@ -330,12 +337,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 let removeButtons = columns[6].querySelectorAll(".edit-game");
                 removeButtons[0].classList.add('d-none'); //edit
             }
-            if(columns[5].textContent == 'On Queue' || columns[5].textContent == 'Ongoing' ){
-                autoOnGoing(row,columns[4].textContent);
-            }
-
-            
-
+            gameCtr(columns[5].textContent);
         });
 
         
@@ -367,7 +369,6 @@ document.addEventListener('DOMContentLoaded', function() {
             activeRow = row;
             assignRowFieldValues(row);
 
-            // let d = 
             let SchedCreated = document.getElementById('sched-date');
             SchedCreated.value = columns[4].textContent; 
 
@@ -400,7 +401,6 @@ document.addEventListener('DOMContentLoaded', function() {
         columns[2].textContent = modalMain.querySelector('#tier').value
         columns[3].textContent = modalMain.querySelector('#date-created').value
         columns[4].textContent = d;
-        columns[5].textContent = modalMain.querySelector('#time').value
         columns[7].textContent = modalMain.querySelector('#game-description').value
         columns[8].textContent = modalMain.querySelector('#players').value
         
@@ -419,8 +419,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // -------------------------ADD BUTTON---------------------------
     addButton = document.querySelector('#add-schedule');
     addButton.addEventListener('click', function(){
-
-    
         clearFieldValues()
         const inputFields = document.querySelectorAll(".form-control");
         inputFields.forEach(input => {
@@ -429,22 +427,19 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // -------------------------CREATE BUTTON---------------------------
-        const createButton = document.querySelector("#modal-btn-create");
-        createButton.addEventListener('click', function(){
-            addTicketRecord()
-            modalView.hide()
-            
-        });
+        
+        
+    });
+
+    // -------------------------CREATE BUTTON---------------------------
+    const createButton = document.querySelector("#modal-btn-create");
+    createButton.addEventListener('click', function(){
+        addTicketRecord()
+        modalView.hide()
+        generateToast("text-bg-primary",`Game <strong>${newGameNo[0].textContent}</strong> ADDED`);
     });
 
     
-
-
-
-
-
-
     // -------------------------DELETE BUTTON---------------------------
     deleteButton = document.querySelectorAll('.delete-game');
     deleteButton.forEach(function(button){
@@ -466,6 +461,4 @@ document.addEventListener('DOMContentLoaded', function() {
         currentRow.remove();        
         generateToast("text-bg-danger",`Game <strong>${gameNo[0].textContent}</strong> DELETED`);
     });
-
-        
 });
