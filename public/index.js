@@ -115,16 +115,10 @@ function assignRowFieldValues(row){
     ChangeTierTitle(columns[2].textContent)
 }
 
-function breakByHTMLChars(statusHtml = ""){
-    const tagRegex = /<[^>]*>/g;
-    const resultArray = statusHtml.split(tagRegex);
-
-    return resultArray.filter(item => item.trim() !== '');
-}
 
 function showHideModalButtons(row, state = '') {
     const columns = row.getElementsByTagName('td');
-    const status = breakByHTMLChars(columns[5].innerHTML);
+    const status = columns[5].innerHTML;
     const modalMain = document.querySelector('#viewGameModal');
 
     removeBtns = modalMain.querySelectorAll("#modal-btn-early,#modal-btn-complete,#modal-btn-save,#modal-btn-create,#modal-btn-cancel");
