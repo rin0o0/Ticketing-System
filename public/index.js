@@ -258,7 +258,8 @@ function addTicketRecord(){
     let DungeonMaster = document.getElementById('dungeon-master');
     let tier = document.getElementById('tier');
     let dateCreated = document.getElementById('date-created');
-    let SchedDate = document.getElementById('sched-date');
+    let SchedDate = document.getElementById('sched-date').value;
+    datetimeFormated = SchedDate.replace("T", " ");
     let status      = document.getElementById('field-status');
     let description = document.getElementById('game-description');
     let players    = document.getElementById('players');
@@ -269,7 +270,6 @@ function addTicketRecord(){
 
     tblRow   = document.querySelector("#table-onqueue");
     tblBody  = tblRow.querySelector('tbody');
-
     newRow     = tblBody.insertRow();
 
     let modalHeader = document.getElementById('modal-header');
@@ -292,7 +292,7 @@ function addTicketRecord(){
     col3.outerHTML = `<td class="align-middle">${DungeonMaster.value}</td>`;
     col4.outerHTML = `<td class="align-middle">${tier.value}</td>`;
     col5.outerHTML = `<td class="align-middle">${dateCreated.value}</td>`;
-    col6.outerHTML = `<td class="align-middle">${SchedDate.value}</td>`;
+    col6.outerHTML = `<td class="align-middle">${datetimeFormated}</td>`;
     col7.outerHTML = `<td class="align-middle text-center"><span class="badge rounded-pill bg-grey">${status.value}</span></td>`;
     col8.outerHTML = `<td class="align-middle text-center">
                         <button class="btn btn-info view-game" data-bs-toggle="modal" data-bs-target="#viewGameModal">View</button>
